@@ -35,14 +35,13 @@ package fr.paris.lutece.plugins.antexecuter.service;
 
 import fr.paris.lutece.portal.business.right.RightHome;
 import fr.paris.lutece.portal.service.init.StartUpService;
-import fr.paris.lutece.portal.service.util.AppLogService;
 import fr.paris.lutece.portal.service.util.AppPathService;
-
-import java.io.File;
 
 import org.apache.tools.ant.DefaultLogger;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.ProjectHelper;
+
+import java.io.File;
 
 
 /**
@@ -62,29 +61,22 @@ public class AntExecuter implements StartUpService
      */
     private void executeAntFile(  )
     {
-        try
-        {
-            // Project creation
-            Project project = new Project(  );
-            project.init(  );
+        // Project creation
+        Project project = new Project(  );
+        project.init(  );
 
-            // Logger to see ant execution and error messages
-            DefaultLogger logger = new DefaultLogger(  );
-            logger.setMessageOutputLevel( Project.MSG_INFO );
-            logger.setErrorPrintStream( System.err );
-            logger.setOutputPrintStream( System.out );
-            project.addBuildListener( logger );
+        // Logger to see ant execution and error messages
+        DefaultLogger logger = new DefaultLogger(  );
+        logger.setMessageOutputLevel( Project.MSG_INFO );
+        logger.setErrorPrintStream( System.err );
+        logger.setOutputPrintStream( System.out );
+        project.addBuildListener( logger );
 
-            // Loading of build file, configuration of the project and execution
-            File buildFile = new File( AppPathService.getAbsolutePathFromRelativePath( PATH_BUILDFILE ) );
-            ProjectHelper.configureProject( project, buildFile );
-            project.setProperty( ANTFILE_PROPERTY, buildFile.getAbsolutePath(  ) );
-            project.executeTarget( ANT_TARGET );
-        }
-        catch ( Exception e )
-        {
-            AppLogService.error( "Failed to execute ant file." );
-        }
+        // Loading of build file, configuration of the project and execution
+        File buildFile = new File( AppPathService.getAbsolutePathFromRelativePath( PATH_BUILDFILE ) );
+        ProjectHelper.configureProject( project, buildFile );
+        project.setProperty( ANTFILE_PROPERTY, buildFile.getAbsolutePath(  ) );
+        project.executeTarget( ANT_TARGET );
     }
 
     /**
@@ -107,6 +99,7 @@ public class AntExecuter implements StartUpService
 
     /**
      * Returns the name of the process
+     * @return The name of the process
      */
     public String getName(  )
     {
