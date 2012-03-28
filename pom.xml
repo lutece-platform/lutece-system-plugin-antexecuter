@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<artifactId>lutece-plugins-pom</artifactId>
+		<groupId>fr.paris.lutece.plugins</groupId>
+		<version>2.26</version>
+	</parent>
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.paris.lutece.plugins</groupId>
+	<artifactId>plugin-antexecuter</artifactId>
+	<packaging>lutece-plugin</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>Lutece ant executer plugin</name>
+	
+	<repositories>
+		<repository>
+			<id>lutece</id>
+			<name>luteceRepository</name>
+			<url>http://dev.lutece.paris.fr/maven_repository</url>
+			<layout>default</layout>
+	  	</repository>
+	</repositories>
+	
+	<dependencies>
+		<dependency>
+		    <groupId>fr.paris.lutece</groupId>
+		    <artifactId>lutece-core</artifactId>
+		    <version>[2.3.1,4.0.0-SNAPSHOT)</version>
+		    <type>lutece-core</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant-launcher</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+	</dependencies>
+	
+		<properties>
+		<componentName>antexecuter</componentName>
+		<jiraProjectName>ANTEXECUTER</jiraProjectName>
+		<jiraComponentId>10656</jiraComponentId>
+	</properties>
+    <scm>
+        <connection>scm:svn:http://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/system/plugin-antexecuter</connection>
+        <developerConnection>scm:svn:https://dev.lutece.paris.fr/svn/lutece/portal/trunk/plugins/system/plugin-antexecuter</developerConnection>
+        <url>http://dev.lutece.paris.fr/viewvc/lutece/portal/trunk/plugins/system/plugin-antexecuter</url>
+    </scm>
+</project>
