@@ -4,6 +4,6 @@
 <beans>
     
    <!-- package sqlquery -->
-  <bean id="antexecuter"  class="fr.paris.lutece.plugins.antexecuter.service.Antexecuter" />
+  <bean id="antexecuter"  class="fr.paris.lutece.plugins.antexecuter.service.AntExecuter" />
   
 </beans>
