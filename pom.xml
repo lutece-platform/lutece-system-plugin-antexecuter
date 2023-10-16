@@ -2,13 +2,13 @@
     <parent>
         <artifactId>lutece-global-pom</artifactId>
         <groupId>fr.paris.lutece.tools</groupId>
-        <version>3.0.12</version>
+        <version>6.1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>plugin-antexecuter</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>[1.0.0-SNAPSHOT,)</version>
     <name>Lutece ant executer plugin</name>
     <repositories>
         <repository>
@@ -22,7 +22,7 @@
         <dependency>
             <groupId>fr.paris.lutece</groupId>
             <artifactId>lutece-core</artifactId>
-            <version>[2.3.1,)</version>
+            <version>7.0.10-SNAPSHOT</version>
             <type>lutece-core</type>
         </dependency>
         <dependency>

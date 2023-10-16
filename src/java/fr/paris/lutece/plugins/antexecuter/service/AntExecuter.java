@@ -33,8 +33,9 @@
  */
 package fr.paris.lutece.plugins.antexecuter.service;
 
-import fr.paris.lutece.portal.business.right.RightHome;
-import fr.paris.lutece.portal.service.init.StartUpService;
+import fr.paris.lutece.plugins.antexecuter.business.CheckDatabaseDAO;
+import fr.paris.lutece.portal.service.init.IStartUpBeforeSpring;
+import fr.paris.lutece.portal.service.util.AppException;
 import fr.paris.lutece.portal.service.util.AppPathService;
 
 import org.apache.tools.ant.DefaultLogger;
@@ -49,13 +50,14 @@ import java.io.File;
  * The ant file is executed only if the database doesn't exist yet.
  * See methods javadoc for more details.
  */
-public class AntExecuter implements StartUpService
+public class AntExecuter implements IStartUpBeforeSpring
 {
     // CONSTANTS
     private static final String PATH_BUILDFILE = "/WEB-INF/sql/build.xml";
     private static final String ANTFILE_PROPERTY = "ant.file";
     private static final String ANT_TARGET = "all";
 
+   
     /**
      * Executes the ant buildfile.
      */
@@ -85,24 +87,20 @@ public class AntExecuter implements StartUpService
      * It calls a random SQL query and executes the build file if the query
      * fails.
      */
+    @Override
     public void process(  )
     {
-        try
-        {
-            RightHome.getRightsList(  );
-        }
-        catch ( Exception e )
-        {
-            executeAntFile(  );
-        }
+    	 try 
+         {
+    		 CheckDatabaseDAO.checkDataBase( );
+         
+         }catch( AppException e ){            
+        	 executeAntFile(  );
+         }
+    	 
     }
-
-    /**
-     * Returns the name of the process
-     * @return The name of the process
-     */
-    public String getName(  )
-    {
-        return "Ant Executer";
+    @Override
+    public int order() {
+    	 return 1;
     }
 }
